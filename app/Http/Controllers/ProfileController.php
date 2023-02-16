@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AvatarUpdateRequest;
 use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -34,12 +36,32 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
+        $request->validated([
+            'avatar' => 'image|mimes: jpg, png, jpeg'
+        ]);
+
+        $path = Storage::url($request->file('avatar')->store('images', 'public'));
+
+
+
+        $user = $request->user();
+
+
+
+        $user->avatar=$path;
+
+
+        $user->save();
+
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
 
     /**
      * Delete the user's account.
      */
+
+
+
     public function destroy(Request $request): RedirectResponse
     {
         $request->validateWithBag('userDeletion', [

@@ -1,19 +1,24 @@
-<!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  @vite('resources/css/app.css')
-</head>
-<body>
+<x-guest-layout>
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          @foreach ($tweets as $tweet)
+          <div class="rounded overflow-hidden shadow-lg transform transition duration-300 hover:scale-105">
+            <div class="px-6 py-4">
+              <div class="text-gray-500 text-sm mb-2">{{ $tweet->user->name }}</div>
+              <p class="text-black text-base">
+                {{ $tweet->text }}
+              </p>
+            </div>
+          </div>
+          @endforeach
+        </div>
+      </div>
 
-    <h1 class="text-center">Liste des tweets</h1>
-    <ul>
-    @foreach($tweets as $tweet)
-    <li>{{ $tweet->text }}</li>
-    @endforeach
-    </ul>
-</body>
-</html>
+
+
+    <div class="mt-8">
+        {{ $tweets->links() }}
+    </div>
+</x-guest-layout>
 
 

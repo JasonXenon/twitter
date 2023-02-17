@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Tweet::class);
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

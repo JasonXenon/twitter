@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TweetController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,13 @@ Route::get('/', function () {
 });
 
 Route::get('/', [TweetController::class, 'index']);
+
+Route::get('/search', [TweetController::class, 'search'])->name('search');
+
+Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+
+Route::get('/tweets/{id}', [TweetController::class, 'show'])->name('tweets.show');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

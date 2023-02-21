@@ -26,7 +26,11 @@ Route::get('/search', [TweetController::class, 'search'])->name('search');
 
 Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 
+
+Route::get('/tweets/create', [TweetController::class, 'create'])->name('tweets.create');
+Route::post('/tweets', [TweetController::class, 'store'])->name('tweets.store');
 Route::get('/tweets/{id}', [TweetController::class, 'show'])->name('tweets.show');
+
 
 
 Route::get('/dashboard', function () {

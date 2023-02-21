@@ -28,7 +28,7 @@
                     </a>
                 </div>
                 <div class="flex items-center space-x-4 justify-end">
-                    <a class="font-bold hover:text-emerald-600 transition"
+                    <a class="font-bold hover:text-emerald-600 text-xl transition mr-2"
                         href="{{ route('profile.edit') }}">Profil</a>
                 </div>
             </nav>
@@ -36,7 +36,7 @@
 
 
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div class="w-full my-6 p-6 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <div class="w-full h-full my-6 p-6 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
         </div>

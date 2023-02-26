@@ -14,7 +14,7 @@
                 <div class="h-full rounded overflow-hidden shadow-lg transform transition duration-300 hover:scale-105 hover:bg-slate-600">
                     <div class="h-full px-6 py-4 border-2 border-purple-800/50">
                         <div class="text-black/75 hover:text-white text-sm mb-2">{{ $tweet->user->name }}</div>
-                        <p class="text-black hover:text-white hover:text-xl text-base">
+                        <p class="text-black hover:text-lime-50 hover:text-xl text-base">
                             {{ $tweet->text }}
                         </p>
                         @if($tweet->img)

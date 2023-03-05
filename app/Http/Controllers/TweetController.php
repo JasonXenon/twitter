@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\TweetRequest;
+use App\Models\Like;
 use App\Models\Tweet;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
@@ -79,7 +80,7 @@ class TweetController extends Controller
             return back();
         }
 
-        $like = new Like;
+        $like = new Like();
         $like->user_id = $user->id;
 
         $tweet->likes()->save($like);

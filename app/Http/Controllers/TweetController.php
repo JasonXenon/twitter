@@ -73,18 +73,16 @@ class TweetController extends Controller
 
     public function like($id) {
         $tweet = Tweet::findOrFail($id);
-        $user = auth()->user();
+        $userId = auth()->id();
 
-        // Vérifie si l'utilisateur a déjà aimé ce tweet
-        if($user->likes()->where('tweet_id', $tweet->id)->exists()){
+        if ($tweet->likes()->where('user_id', $userId)->exists()) {
             return back();
         }
 
         $like = new Like();
-        $like->user_id = $user->id;
+        $like->user_id = $userId;
 
         $tweet->likes()->save($like);
-
         return back();
     }
 

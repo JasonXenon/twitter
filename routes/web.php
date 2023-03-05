@@ -31,6 +31,7 @@ Route::get('/tweets/create', [TweetController::class, 'create'])->name('tweets.c
 Route::post('/tweets', [TweetController::class, 'store'])->name('tweets.store');
 Route::get('/tweets/{id}', [TweetController::class, 'show'])->name('tweets.show');
 
+Route::post('/tweets/{id}/like', [TweetController::class, 'like'])->name('tweets.like');
 
 
 Route::get('/dashboard', function () {

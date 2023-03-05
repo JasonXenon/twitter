@@ -52,4 +52,8 @@ class User extends Authenticatable
     {
         return $this->belongsTo(User::class);
     }
+
+    public function likes() {
+        return $this->belongsToMany(Tweet::class);
+    }
 }

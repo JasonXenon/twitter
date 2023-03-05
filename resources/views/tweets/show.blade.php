@@ -12,6 +12,10 @@
                 @if($tweet->img)
                     <img src="{{ asset('storage/' . $tweet->img) }}" alt="{{ $tweet->text }}" class="mb-4">
                 @endif
+                <form action="{{ route('tweets.like', $tweet->id) }}" method="POST">
+                    @csrf
+                    <button class="text-red-600 text-xl mt-4" type="submit">Like</button>
+                </form>
             </div>
         </div>
     </div>

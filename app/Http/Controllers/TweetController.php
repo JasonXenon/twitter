@@ -70,6 +70,26 @@ class TweetController extends Controller
     return redirect()->route('index');
     }
 
+    public function like($id) {
+        $tweet = Tweet::findOrFail($id);
+        $user = auth()->user();
+
+        // Vérifie si l'utilisateur a déjà aimé ce tweet
+        if($user->likes()->where('tweet_id', $tweet->id)->exists()){
+            return back();
+        }
+
+        $like = new Like;
+        $like->user_id = $user->id;
+
+        $tweet->likes()->save($like);
+
+        return back();
+    }
+
+
+
+
 
 
 

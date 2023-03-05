@@ -16,13 +16,7 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/', [TweetController::class, 'index']);
-
-Route::get('/search', [TweetController::class, 'search'])->name('search');
+Route::get('/', [TweetController::class, 'index'])->name('index');
 
 Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 
@@ -32,6 +26,9 @@ Route::post('/tweets', [TweetController::class, 'store'])->name('tweets.store');
 Route::get('/tweets/{id}', [TweetController::class, 'show'])->name('tweets.show');
 
 Route::post('/tweets/{id}/like', [TweetController::class, 'like'])->name('tweets.like');
+
+Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
+
 
 
 Route::get('/dashboard', function () {

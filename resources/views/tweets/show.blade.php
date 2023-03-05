@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Tweet de {{ $tweet->user->name }}
+            <a href="{{ route('profile.show', $tweet->user) }}">Tweet de {{ $tweet->user->name }} </a>
         </h2>
     </x-slot>
 
@@ -14,7 +14,7 @@
                 @endif
                 <form action="{{ route('tweets.like', $tweet->id) }}" method="POST">
                     @csrf
-                    <button class="text-red-600 text-xl mt-4" type="submit">Like</button>
+                    <p>{{ $tweet->likes_count }} Likes </p><button class="text-red-600 text-xl mt-4" type="submit">Like</button>
                 </form>
             </div>
         </div>

@@ -1,9 +1,6 @@
 <x-guest-layout>
 
-    <form method="GET" action="{{ route('search') }}" class="flex items-center justify-end px-3">
-        <input type="text" name="query" placeholder="Rechercher des tweets ou des personnes" class="mr-2">
-        <button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded">Rechercher</button>
-    </form>
+    <form method="GET" action="{{ route('index') }}" class="flex items-center justify-end px-3"><input type="text" name="query" placeholder="Rechercher des tweets ou des personnes" class="mr-2" value="{{ request()->query('query') }}"><button type="submit" class="bg-blue-500 text-white font-bold py-2 px-4 rounded">Rechercher</button></form>
 
 
 
@@ -20,6 +17,8 @@
                         @if($tweet->img)
                             <img src="{{ asset('storage/' . $tweet->img) }}" alt="{{ $tweet->text }}" class="mb-4">
                         @endif
+                        <p>{{ $tweet->created_at->diffForHumans() }}</p>
+                        <p>{{ $tweet->likes_count }} Likes </p>
                     </div>
                 </div>
             </a>

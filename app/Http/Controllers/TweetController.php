@@ -17,28 +17,17 @@ use Illuminate\Support\Facades\Storage;
 
 class TweetController extends Controller
 {
-    public function index()
-    {
-        $tweets = Tweet::with('User')->paginate(20);
+    public function index(Request $request) {
+         $tweets = Tweet::with('user')->withCount('likes')
+         ->where('text', 'LIKE', '%'.$request->query('query').'%')
+         ->orWhereHas('user', function ($query) use ($request) { $query->where('name', 'LIKE', '%'.$request->query('query').'%'); })
+         ->paginate(20);
 
-        return view('homepage.index', [
-            'tweets' => $tweets,
-        ]);
-    }
-
-    public function search(Request $request)
-    {
-        $query = $request->input('query');
-
-        $tweets = Tweet::where('text', 'like', '%'.$query.'%')->get();
-        $users = User::where('name', 'like', '%'.$query.'%')->get();
-
-        return view('search', compact('tweets', 'users', 'query'));
-    }
+         return view('homepage.index', [ 'tweets' => $tweets, ]);  }
 
     public function show($id)
     {
-        $tweet = Tweet::findOrFail($id);
+        $tweet = Tweet::withCount('likes')->findOrFail($id);
 
         return view('tweets.show', compact('tweet'));
     }
@@ -85,11 +74,4 @@ class TweetController extends Controller
         $tweet->likes()->save($like);
         return back();
     }
-
-
-
-
-
-
-
 }

@@ -13,7 +13,7 @@ class Tweet extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function like() {
+    public function likes() {
         return $this->hasMany(Like::class);
     }
 }

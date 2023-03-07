@@ -18,12 +18,17 @@ use Illuminate\Support\Facades\Storage;
 class TweetController extends Controller
 {
     public function index(Request $request) {
-         $tweets = Tweet::with('user')->withCount('likes')
-         ->where('text', 'LIKE', '%'.$request->query('query').'%')
-         ->orWhereHas('user', function ($query) use ($request) { $query->where('name', 'LIKE', '%'.$request->query('query').'%'); })
-         ->paginate(20);
+        $tweets = Tweet::with('user')->withCount('likes')
+         ->where('text', 'LIKE', '%'.$request->query('search').'%')
+         ->orWhereHas('user', function ($query) use ($request) {
+         $query->where('name', 'LIKE', '%'.$request->query('search').'%');
+         })
+         ->latest()
+         ->paginate(20)
+        ;
 
-         return view('homepage.index', [ 'tweets' => $tweets, ]);  }
+         return view('homepage.index', [ 'tweets' => $tweets, ]);
+        }
 
     public function show($id)
     {

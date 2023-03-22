@@ -33,6 +33,10 @@
                     <a class="font-bold hover:text-blue-500 text-xl transition mr-2"
                         href="{{ route('tweets.create') }}">Créer un tweet</a>
                 </div>
+                <div class="flex items-center space-x-4 justify-end">
+                    <a class="font-bold hover:text-blue-500 text-xl transition mr-2"
+                        href="{{ route('login') }}">Connection / Inscription</a>
+                </div>
             </nav>
         </header>
 

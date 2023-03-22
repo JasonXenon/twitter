@@ -18,10 +18,15 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [TweetController::class, 'index'])->name('index');
 
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
 Route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
 
 
-Route::get('/tweets/create', [TweetController::class, 'create'])->name('tweets.create');
+Route::middleware(['auth'])->get('/tweets/create', [TweetController::class, 'create'])->name('tweets.create');
+
 Route::post('/tweets', [TweetController::class, 'store'])->name('tweets.store');
 Route::get('/tweets/{id}', [TweetController::class, 'show'])->name('tweets.show');
 

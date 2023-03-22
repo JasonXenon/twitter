@@ -14,6 +14,7 @@
                         <div>
                             <x-input-label for="text" :value="__('Tweet text')" />
                             <x-text-input id="text" class="block mt-1 w-full" type="text" name="text" required autofocus />
+                            <x-input-error :messages="$errors->get('text')" class="mt-2" />
                         </div>
 
                         <div class="mt-4">

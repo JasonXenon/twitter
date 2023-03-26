@@ -23,6 +23,7 @@ class TweetController extends Controller
         ->orWhereHas('user', function ($query) use ($request) {
             $query->where('name', 'LIKE', '%'.$request->query('query').'%');
         })
+        ->latest()
         ->paginate(20);
         return view('homepage.index', [
             'tweets' => $tweets,

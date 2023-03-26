@@ -34,8 +34,14 @@
                         href="{{ route('tweets.create') }}">Créer un tweet</a>
                 </div>
                 <div class="flex items-center space-x-4 justify-end">
-                    <a class="font-bold hover:text-blue-500 text-xl transition mr-2"
-                        href="{{ route('login') }}">Connection / Inscription</a>
+                    @auth
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <button type="submit" class="font-bold text-red-500 hover:text-blue-500 text-xl transition mr-2">Déconnexion</button>
+                        </form>
+                    @else
+                        <a class="font-bold hover:text-blue-500 text-xl transition mr-2" href="{{ route('login') }}">Connection / Inscription</a>
+                    @endauth
                 </div>
             </nav>
         </header>

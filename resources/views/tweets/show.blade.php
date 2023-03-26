@@ -14,7 +14,7 @@
                 @endif
                 <form action="{{ route('tweets.like', $tweet->id) }}" method="POST">
                     @csrf
-                    <p>{{ $tweet->likes_count }} Likes </p><button class="text-red-600 text-xl mt-4" type="submit">Like</button>
+                    <p>{{ $tweet->likes_count }} Likes </p><button class="text-red-600 text-xl mt-4" type="submit"><x-heroicon-o-heart class="w-6 h-6 text-black" /></button>
                 </form>
             </div>
         </div>

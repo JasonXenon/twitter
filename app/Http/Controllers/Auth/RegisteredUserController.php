@@ -42,8 +42,14 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'avatar' => Storage::put('public/images', $request->avatar)
         ]);
+
+        // Si il y a une image, on la sauvegarde
+        if ($request->hasFile('avatar')) {
+        $path = Storage::url($request->file('avatar')->store('images', 'public'));
+        $user->avatar = $path;
+        $user->save();
+    }
 
         event(new Registered($user));
 

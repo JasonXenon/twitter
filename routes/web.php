@@ -30,7 +30,7 @@ Route::middleware(['auth'])->get('/tweets/create', [TweetController::class, 'cre
 Route::post('/tweets', [TweetController::class, 'store'])->name('tweets.store');
 Route::get('/tweets/{id}', [TweetController::class, 'show'])->name('tweets.show');
 
-Route::post('/tweets/{id}/like', [TweetController::class, 'like'])->name('tweets.like');
+Route::middleware(['auth'])->post('/tweets/{id}/like', [TweetController::class, 'like'])->name('tweets.like');
 
 Route::get('/profile/{user}', [ProfileController::class, 'show'])->name('profile.show');
 

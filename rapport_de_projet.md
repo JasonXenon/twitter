@@ -15,8 +15,6 @@ graph TD;
     User -- has_many --> Like;
 ```
 
-![Nom de l'image]('mermaid-diagram-2023-03-27-201658.png')
-
 
 Il y a trois modèles dans l'application Laravel : User, Tweet et Like.
 Le modèle User a une relation has_many avec les modèles Tweet et Like.

@@ -10,9 +10,9 @@ User ||--o{ Like : has_many
 
 ```mermaid
 graph TD;
-    User-->Like;
-    Like-->Tweet;
-    Tweet-->User;
+    User -- has_many --> Tweet;
+    Tweet -- has_many --> Like;
+    User -- has_many --> Like;
 ```
 
 ![Nom de l'image]('mermaid-diagram-2023-03-27-201658.png')

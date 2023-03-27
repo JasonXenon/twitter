@@ -1,9 +1,12 @@
 Voici le code de mon schéma Mermaid de ma Database SQL pour ce projet Twitter :
 
-erDiagram
-    User ||--o{ Tweet : has_many
-    Tweet ||--o{ Like : has_many
-    User ||--o{ Like : has_many
+```mermaid
+graph TD
+erDiagram 
+User ||--o{ Tweet : has_many 
+Tweet ||--o{ Like : has_many 
+User ||--o{ Like : has_many
+```
 
 ![Nom de l'image]('mermaid-diagram-2023-03-27-201658.png')
 

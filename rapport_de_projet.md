@@ -100,35 +100,8 @@ Cette route permet d'afficher le tableau de bord de l'application. Elle est asso
 La première route, Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');, affiche le formulaire de modification de profil. Lorsqu'un utilisateur soumet ce formulaire, il est redirigé vers la route Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update'); qui traite les données du formulaire et met à jour les informations du profil de l'utilisateur dans la base de données. Enfin, si l'utilisateur souhaite supprimer son compte, il peut le faire en accédant à la route Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');, qui supprime le compte de l'utilisateur de la base de données.
 
 
+J'ai créé trois classes importantes: User, Tweet et Like. Chacune de ces classes représente une table dans la base de données. La classe User a une relation has_many avec les classes Tweet et Like, ce qui signifie qu'un utilisateur peut avoir plusieurs tweets et likes associés. La classe Tweet a également une relation has_many avec la classe Like, ce qui signifie qu'un tweet peut avoir plusieurs likes associés. La classe Like a une relation belongs_to_many avec les classes User et Tweet, ce qui signifie qu'un like peut être associé à plusieurs utilisateurs et tweets. En utilisant ces classes, je peux facilement interagir avec la base de données et manipuler les données dans mon application.
 
+Les objets sont des instances de classes qui représentent les données stockées dans la base de données. Par exemple, chaque utilisateur enregistré dans la base de données est représenté par un objet de la classe User. Les objets permettent de manipuler et de traiter ces données dans l'application, en utilisant les méthodes et propriétés définies dans la classe correspondante.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-AccueilController s'occupe d'afficher les Tweets dans un feed principal en sélectionnant tous les Tweets de la DB en méthode index
-UserController s'occupe
-d'afficher les Utilisateurs du projet en sélectionnant tous les Users de la DB en méthode index
-d'afficher les profils de l'Utilisateur sélectionné en méthode show ($id)
-ProfilController permet la gestion du profil de l'utilisateur connecté
-TweetController permet la création de Tweets (create & edit), l'affichage individuel de ces Tweets (show ($id)), et la gestion de commentaires en rapport avec un Tweet
-LikeController permet la gestion des Likes avec un store
-Une fois la schématisation, l'implémentation et les liaisons du projet réalisés, il était important de gérer l'affichage grâce à Tailwind. Le projet opte ici pour un affichage en sidenav fixe afin de conserver l'accès aux fonctionnalités (Tweet, Log Out, ...) en toutes circonstances durant la navigation des Tweets.
+L'utilisation d'objets facilite la manipulation des données dans l'application et permet de séparer la logique métier de l'application de la logique de gestion de la base de données. Les objets sont également utilisés pour établir des relations entre les données, en utilisant les relations définies dans les classes correspondantes. Par exemple, un utilisateur peut avoir plusieurs tweets associés, ce qui est représenté par une relation has_many dans la classe User. En utilisant des objets, il est facile d'accéder à tous les tweets d'un utilisateur donné en utilisant la méthode appropriée de la classe User.

@@ -33,7 +33,7 @@ Profil d'un User
 Profil de l'User authentifié
 Vue d'un Tweet
 Ajout d'un Tweet
-Vue qui affiche les tweets ou les users correspond à la recherche
+Vue qui affiche les tweets ou les users correspondant à la recherche
 
 
 Les contrôleurs sont les suivants :
